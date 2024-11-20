@@ -123,7 +123,7 @@ const getUserName = (userId) => {
       {tickets.map((ticket) => (
         <div key={ticket.id} className="kanban-card">
           {/* Ticket ID */}
-          <div className="kanban-card-id">ID: {ticket.id}</div>
+          <div className="kanban-card-id">{ticket.id}</div>
           <div className="kanban-card-circle-image">
             {/* Placeholder image, replace with an actual URL if you have one */}
             <img
