@@ -7,18 +7,19 @@
     background-color: #f9fafb; /* Light background */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     max-width: 400px;
-  }
-  
-  .kanban-column-title {
+    width: 100%; /* Ensure it adapts to screen size */
+    box-sizing: border-box; /* Include padding and border in width */
+}
+
+.kanban-column-title {
     font-size: 18px;
     font-weight: bold;
     margin-bottom: 16px;
     margin-right: 2px;
     color: #111827; /* Dark text */
-  }
-  
-  
-  .kanban-card {
+}
+
+.kanban-card {
     display: flex;
     position: relative; 
     flex-direction: column;
@@ -28,29 +29,31 @@
     background-color: #ffffff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     margin-bottom: 12px;
-  }
-  
-  .kanban-card-id {
+    width: 100%; /* Ensure it adapts */
+    box-sizing: border-box;
+}
+
+.kanban-card-id {
     font-size: 15px;
     font-weight: bold;
     color: #6b7280; /* Gray text */
     margin-bottom: 8px;
-  }
-  
-  .kanban-card-title {
+}
+
+.kanban-card-title {
     font-size: 16px;
     font-weight: bold;
     margin: 4px 0;
     color: #1f2937; /* Dark text */
-  }
-  
-  .kanban-card-type {
+}
+
+.kanban-card-type {
     font-size: 14px;
     color: #4b5563; /* Dark gray text */
     margin-top: 4px;
-  }
-  
-  .kanban-card-badge {
+}
+
+.kanban-card-badge {
     display: inline-block;
     padding: 4px 8px;
     font-size: 12px;
@@ -59,8 +62,9 @@
     border-radius: 4px;
     margin-top: 8px;
     align-self: flex-start;
-  }
-  .kanban-card-circle-image {
+}
+
+.kanban-card-circle-image {
     position: absolute;
     top: 5px;
     right: 5px;
@@ -69,18 +73,18 @@
     border-radius: 50%;
     overflow: hidden;
     z-index: 1000;
-  }
-  
-  .kanban-card-circle-image img {
+}
+
+.kanban-card-circle-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-  }
-  .user-circle {
+}
+
+.user-circle {
     width: 40px; /* Adjust the size as needed */
     height: 40px;
     border-radius: 50%; /* Makes the element circular */
-   
     display: flex;
     align-items: center;
     justify-content: center;
@@ -91,4 +95,56 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Optional shadow for better appearance */
 }
 
-  
+/* Responsive Design */
+@media (max-width: 768px) {
+    .kanban-column {
+        max-width: 100%; /* Full width on smaller screens */
+    }
+
+    .kanban-column-title {
+        font-size: 16px; /* Adjust font size */
+    }
+
+    .kanban-card {
+        padding: 12px; /* Reduce padding for smaller screens */
+    }
+
+    .kanban-card-id {
+        font-size: 14px;
+    }
+
+    .kanban-card-title {
+        font-size: 14px;
+    }
+
+    .kanban-card-type {
+        font-size: 12px;
+    }
+
+    .user-circle {
+        width: 30px; /* Adjust size for smaller screens */
+        height: 30px;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .kanban-card {
+        flex-direction: column; /* Stack elements for very small screens */
+        padding: 8px; /* Reduce padding */
+    }
+
+    .kanban-card-title {
+        font-size: 12px; /* Smaller text */
+    }
+
+    .kanban-card-type {
+        font-size: 10px; /* Smaller text */
+    }
+
+    .user-circle {
+        width: 25px; /* Smaller circle */
+        height: 25px;
+        font-size: 10px; /* Smaller font */
+    }
+}

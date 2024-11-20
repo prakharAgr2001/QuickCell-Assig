@@ -85,3 +85,84 @@
     display: inline-block;
     margin-bottom: 20px;
 }
+/* Mobile responsiveness using media queries */
+@media (max-width: 768px) {
+    /* Stack the kanban columns vertically on smaller screens */
+    .kanban-board {
+        flex-direction: column;
+        padding: 8px; /* Reduce padding to fit small screens */
+    }
+
+    .kanban-board > * {
+        min-width: auto; /* Allow columns to shrink as necessary */
+        width: 100%; /* Full width columns */
+    }
+
+    /* Adjust display button to be full width */
+    .display-button {
+        width: 100%; /* Make the button full width on smaller screens */
+        margin-left: 0; /* Remove left margin for better alignment */
+        margin-right: 0; /* Remove right margin */
+        padding: 10px 16px; /* Adjust padding if needed */
+    }
+
+    /* Adjust the dropdown box width to fit smaller screens */
+    .dropdown-box {
+        width: 100%; /* Full width dropdown on small screens */
+        margin-top: 8px; /* Adjust margin */
+    }
+
+    .button-icon img {
+        width: 14px; /* Smaller icon size for better fit */
+        height: 14px;
+    }
+
+    /* Adjust font size for smaller screens */
+    .display-button {
+        font-size: 12px; /* Smaller font size for mobile */
+        padding: 8px 12px; /* Adjust padding */
+    }
+
+    /* Reduce padding inside the dropdown box */
+    .dropdown-box {
+        padding: 10px;
+    }
+
+    .dropdown-box select {
+        padding: 4px; /* Reduce padding for better fitting on small screens */
+    }
+
+    .dropdown-box label {
+        font-size: 12px; /* Smaller font size for mobile */
+    }
+}
+
+@media (max-width: 480px) {
+    /* Further adjustments for very small screens (e.g., phones in portrait mode) */
+    .display-button {
+        font-size: 10px; /* Even smaller font for smaller screens */
+        padding: 6px 10px;
+    }
+
+    .kanban-board {
+        flex-direction: column; /* Ensure stacking of columns */
+    }
+
+    .dropdown-box {
+        width: calc(100% - 20px); /* Full width but with small padding */
+    }
+
+    .button-icon img {
+        width: 12px; /* Even smaller icon */
+        height: 12px;
+    }
+
+    .dropdown-box label {
+        font-size: 12px; /* Smaller labels */
+    }
+
+    /* Adjust margins */
+    .dropdown-box div {
+        margin-bottom: 8px; /* Reduce margin for compact display */
+    }
+}
