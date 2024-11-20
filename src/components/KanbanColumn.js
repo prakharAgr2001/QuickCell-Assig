@@ -24,7 +24,7 @@ const KanbanColumn = ({ title, tickets, grouping, users }) => {
       case 'Backlog':
         return { label: "Backlog", icon: "Backlog.svg" };  // Backlog icon
       case 'In progress':
-        return { label: "In progress", icon: "in-Progress.svg" };  // In Progress icon
+        return { label: "In progress", icon: "in-progress.svg" };  // In Progress icon
       default:
         return { label: "Done Status", icon: "Done.svg" };  // Default unknown status icon
     }
