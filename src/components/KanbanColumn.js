@@ -26,42 +26,99 @@ const KanbanColumn = ({ title, tickets, grouping, users }) => {
       case 'In progress':
         return { label: "In progress", icon: "in-Progress.svg" };  // In Progress icon
       default:
-        return { label: "Unknown Status", icon: "No-status.svg" };  // Default unknown status icon
+        return { label: "Done Status", icon: "Done.svg" };  // Default unknown status icon
     }
   };
 
-  const getUserName = (userId) => {
+//   const getUserName = (userId) => {
+//     const user = users.find((user) => user.id === userId);
+//     return user ? <div>
+//     <span> {user.name}</span></div> : "Unknown User";  // Return "Unknown User" if user not found
+//   };
+const getUserName = (userId) => {
     const user = users.find((user) => user.id === userId);
-    return user ? user.name : "Unknown User";  // Return "Unknown User" if user not found
-  };
+    const initials = user ? user.name.slice(0, 2).toUpperCase() : "UU";
+
+    // Generate a random HSL color with moderate lightness and saturation
+    const randomHSL = () => {
+        const hue = Math.floor(Math.random() * 360); // Random hue (0-360)
+        const saturation = Math.floor(Math.random() * 31) + 40; // Saturation (40-70%)
+        const lightness = Math.floor(Math.random() * 21) + 40; // Lightness (40-60%)
+        return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
+    };
+
+    const backgroundColor = randomHSL();
+
+    return (
+        <div className="user-info" style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+            <div
+                className="user-circle"
+                style={{
+                    backgroundColor,
+                    width: '30px',
+                    height: '30px',
+                    borderRadius: '50%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    color: 'white',
+                    fontWeight: 'bold',
+                    fontSize: '14px',
+                }}
+            >
+                <span>{initials}</span>
+            </div>
+            <span style={{ fontSize: '14px', color: '#333' }}>{user ? user.name : "Unknown User"}</span>
+        </div>
+    );
+};
+
+
+
 
   return (
     <div>
-      <h2 className="kanban-column-title">
-        {grouping === 'priority' ? (
-          <>
-            <span>{getPriorityLabel(Number(title)).label}</span>
-            <span>  </span>
+      <div className='kanban-column-header' style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <h2 className="kanban-column-title" style={{ display: 'flex', alignItems: 'center' }}>
+          {grouping === 'priority' ? (
+            <>
+              <span>{getPriorityLabel(Number(title)).label}</span>
+              <span>  </span>
+              <img
+                src={`/Assets/icons_FEtask/${getPriorityLabel(Number(title)).icon}`} // Updated to point to the public folder
+                style={{ width: '20px', height: '20px',margin: '5px' }} // Adjust size if needed
+              />
+            </>
+          ) : grouping === 'status' ? (
+            <>
+              <span>{getStatusLabel(title).label}</span>
+              <span>  </span>
+              <img
+                src={`/Assets/icons_FEtask/${getStatusLabel(title).icon}`} // Updated to point to the public folder
+                style={{ width: '20px', height: '20px',margin: '5px' }} // Adjust size if needed
+              />
+            </>
+          ) : grouping === 'userId' ? getUserName(title) : title}
+          <span style={{ marginLeft: '10px', fontSize: '14px', color: '#888' }}>
+            {tickets.length}
+          </span>
+        </h2>
+
+        <div className="ic" style={{ display: 'flex', gap: '0px' }}>
+          <span style={{ fontSize: '14px', color: '#888' }}>
             <img
-              src={`/Assets/icons_FEtask/${getPriorityLabel(Number(title)).icon}`} // Updated to point to the public folder
-              style={{ width: '20px', height: '20px' }} // Adjust size if needed
+              src={`/Assets/icons_FEtask/add.svg`} // Updated to point to the public folder
+              style={{ width: '15px', height: '15px' }} // Adjust size if needed
             />
-          </>
-        ) : grouping === 'status' ? (
-          <>
-            <span>{getStatusLabel(title).label}</span>
-            <span>  </span>
+          </span>
+          <span style={{ fontSize: '14px', color: '#888' }}>
             <img
-              src={`/Assets/icons_FEtask/${getStatusLabel(title).icon}`} // Updated to point to the public folder
-              style={{ width: '20px', height: '20px' }} // Adjust size if needed
+              src={`/Assets/icons_FEtask/3 dot menu.svg`} // Updated to point to the public folder
+              style={{ width: '15px', height: '15px' }} // Adjust size if needed
             />
-          </>
-        ) : grouping === 'userId' ? getUserName(title) : title}
-        <span style={{ marginLeft: '10px', fontSize: '14px', color: '#888' }}>
-          {tickets.length}
-        </span>
-      </h2>
-      
+          </span>
+        </div>
+      </div>
 
       {tickets.map((ticket) => (
         <div key={ticket.id} className="kanban-card">
@@ -76,10 +133,22 @@ const KanbanColumn = ({ title, tickets, grouping, users }) => {
           </div>
 
           {/* Ticket Title */}
-          <div className="kanban-card-title">{ticket.title}</div>
+          <div className="kanban-card-title">
+          <img
+                src={`/Assets/icons_FEtask/${getStatusLabel(ticket.status).icon}`} // Updated to point to the public folder
+                style={{ width: '15px', height: '15px' }} // Adjust size if needed
+              />
+           <span style={{ marginLeft: '10px'}}> {ticket.title}</span>
+          </div>
 
           {/* Ticket Type */}
-          <div className="kanban-card-type">{ticket.tag[0] || "Unknown"}</div>
+          <div className="kanban-card-type">
+          <img
+                src={`/Assets/icons_FEtask/${getPriorityLabel(Number(ticket.priority)).icon}`} // Updated to point to the public folder
+                style={{ width: '15px', height: '15px',marginTop: '10px' }} // Adjust size if needed
+              />
+
+          <span style={{ marginLeft: '10px', fontSize: '14px', color: '#888' }}>{ticket.tag[0] || "Unknown"}</span></div>
         </div>
       ))}
     </div>

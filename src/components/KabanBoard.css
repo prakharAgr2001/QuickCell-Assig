@@ -8,4 +8,80 @@
   .kanban-board > * {
     flex: 1; /* Optional: makes all columns have the same width */
   }
-  
+  /* Styling for the Display button */
+.display-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 16px;
+    background-color: white;
+    color: black;
+    border: none;
+    border-radius: 6px;
+    margin: 10px;
+    margin-left: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Shadow for the button */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.display-button:hover {
+    background-color: white;
+    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.2);
+    transform: scale(1.02); /* Slight scaling effect on hover */
+}
+
+.button-icon {
+    margin: 0 5px;
+}
+
+.button-icon img {
+    width: 16px;
+    height: 16px;
+}
+
+/* Dropdown box container */
+.dropdown-box {
+    position: absolute;
+    margin-top: 10px;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for the box */
+    padding: 12px;
+    width: 200px;
+    z-index: 100;
+}
+
+.dropdown-box div {
+    margin-bottom: 10px;
+}
+
+.dropdown-box label {
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.dropdown-box select {
+    width: 100%;
+    padding: 6px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+.dropdown-box select:focus {
+    border-color: #4caf50;
+    outline: none;
+}
+
+/* Align Display container to the left */
+.display-container {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 20px;
+}

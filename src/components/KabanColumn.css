@@ -10,11 +10,13 @@
   }
   
   .kanban-column-title {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: bold;
     margin-bottom: 16px;
+    margin-right: 2px;
     color: #111827; /* Dark text */
   }
+  
   
   .kanban-card {
     display: flex;
@@ -74,4 +76,19 @@
     height: 100%;
     object-fit: cover;
   }
+  .user-circle {
+    width: 40px; /* Adjust the size as needed */
+    height: 40px;
+    border-radius: 50%; /* Makes the element circular */
+   
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white; /* Text color */
+    font-weight: bold;
+    font-size: 14px; /* Adjust font size as needed */
+    text-transform: uppercase; /* Ensure initials are uppercase */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Optional shadow for better appearance */
+}
+
   
