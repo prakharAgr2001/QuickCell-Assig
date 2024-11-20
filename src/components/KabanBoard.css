@@ -1,0 +1,11 @@
+.kanban-board {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    padding: 16px;
+  }
+  
+  .kanban-board > * {
+    flex: 1; /* Optional: makes all columns have the same width */
+  }
+  
