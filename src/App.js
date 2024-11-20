@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { fetchTickets } from './services/api';
 import KanbanBoard from './components/KanbanBoard';
+import './App.css'
 
 function App() {
   const [tickets, setTickets] = useState([]);
@@ -30,7 +31,7 @@ function App() {
 
   return (
     <div>
-      <h1>Interactive Kanban Board</h1>
+      
       <KanbanBoard
         tickets={tickets}
         users={users}

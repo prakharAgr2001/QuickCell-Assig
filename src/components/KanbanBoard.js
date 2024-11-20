@@ -31,7 +31,7 @@ const KanbanBoard = ({ tickets, grouping, sorting, onGroupingChange, onSortingCh
       </div>
       <div className="kanban-board">
         {sortedGroups.map(({ key, tickets }) => (
-          <KanbanColumn key={key} title={key} tickets={tickets} users={users} />
+          <KanbanColumn key={key} title={key} tickets={tickets} users={users} grouping = {grouping}/>
         ))}
       </div>
     </div>
