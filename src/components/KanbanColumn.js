@@ -30,11 +30,7 @@ const KanbanColumn = ({ title, tickets, grouping, users }) => {
     }
   };
 
-//   const getUserName = (userId) => {
-//     const user = users.find((user) => user.id === userId);
-//     return user ? <div>
-//     <span> {user.name}</span></div> : "Unknown User";  // Return "Unknown User" if user not found
-//   };
+
 const getUserName = (userId) => {
     const user = users.find((user) => user.id === userId);
     const initials = user ? user.name.slice(0, 2).toUpperCase() : "UU";
@@ -134,19 +130,25 @@ const getUserName = (userId) => {
 
           {/* Ticket Title */}
           <div className="kanban-card-title">
+          { grouping!='status'?(
           <img
                 src={`/Assets/icons_FEtask/${getStatusLabel(ticket.status).icon}`} // Updated to point to the public folder
                 style={{ width: '15px', height: '15px' }} // Adjust size if needed
-              />
+              />):<span></span>
+          }
            <span style={{ marginLeft: '10px'}}> {ticket.title}</span>
           </div>
 
           {/* Ticket Type */}
           <div className="kanban-card-type">
+          { console.log(grouping)}
+            {grouping === 'status' ? (
           <img
                 src={`/Assets/icons_FEtask/${getPriorityLabel(Number(ticket.priority)).icon}`} // Updated to point to the public folder
                 style={{ width: '15px', height: '15px',marginTop: '10px' }} // Adjust size if needed
               />
+          ):(<span></span>)
+          }
 
           <span style={{ marginLeft: '10px', fontSize: '14px', color: '#888' }}>{ticket.tag[0] || "Unknown"}</span></div>
         </div>
