@@ -1,7 +1,7 @@
 import React from 'react';
-import './KabanColumn.css';
+import './TicketColumn.css';
 
-const KanbanColumn = ({ title, tickets, grouping, users }) => {
+const TicketColumn = ({ title, tickets, grouping, users }) => {
   const getPriorityLabel = (priority) => {
     switch (priority) {
       case 1:
@@ -123,7 +123,7 @@ const getUserName = (userId) => {
           <div className="kanban-card-circle-image">
             {/* Placeholder image, replace with an actual URL if you have one */}
             <img
-              src="https://img.wattpad.com/8f19b412f2223afe4288ed0904120a48b7a38ce1/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f776174747061642d6d656469612d736572766963652f53746f7279496d6167652f5650722d38464e2d744a515349673d3d2d3234323931353831302e313434336539633161633764383437652e6a7067?s=fit&w=720&h=720"
+              src="https://www.citypng.com/public/uploads/preview/download-profile-user-round-orange-icon-symbol-png-701751695033488zipyc2pvo5.png?v=2024110905"
               alt="placeholder"
             />
           </div>
@@ -157,4 +157,4 @@ const getUserName = (userId) => {
   );
 };
 
-export default KanbanColumn;
+export default TicketColumn;

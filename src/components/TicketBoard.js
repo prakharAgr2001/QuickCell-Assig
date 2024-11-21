@@ -1,22 +1,22 @@
 import React, { useState } from 'react';
-import KanbanColumn from './KanbanColumn';
-import './KabanBoard.css';
+import TicketColumn from './TicketColumn';
+import './TicketBoard.css';
 import { groupTickets, sortTickets } from '../utils/ticketUtils';
 
-const KanbanBoard = ({ tickets, grouping, sorting, onGroupingChange, onSortingChange, users }) => {
-    const [isDisplayVisible, setIsDisplayVisible] = useState(false);
+const TicketBoard = ({ tickets, grouping, sorting, onGroupingChange, onSortingChange, users }) => {
+    const [isDropdownVisible, setIsDropdownVisible] = useState(false);
 
     if (!Array.isArray(tickets)) {
         return <div>Loading tickets...</div>;
     }
 
     const handleGroupingChange = (value) => {
-        setIsDisplayVisible(false); // Close the dropdown
+        setIsDropdownVisible(false); // Close the dropdown
         onGroupingChange(value);   // Call the original function
     };
 
     const handleSortingChange = (value) => {
-        setIsDisplayVisible(false); // Close the dropdown
+        setIsDropdownVisible(false); // Close the dropdown
         onSortingChange(value);    // Call the original function
     };
 
@@ -28,28 +28,28 @@ const KanbanBoard = ({ tickets, grouping, sorting, onGroupingChange, onSortingCh
 
     return (
         <div>
-            <div className="display-container">
+            <div className="dropdown-container">
                 <button
-                    className="display-button"
-                    onClick={() => setIsDisplayVisible(!isDisplayVisible)}
+                    className="dropdown-toggle"
+                    onClick={() => setIsDropdownVisible(!isDropdownVisible)}
                 >
-                    <span className="button-icon">
+                    <span className="toggle-icon">
                         <img
                             src={`/Assets/icons_FEtask/Display.svg`}
-                            alt="display-icon"
+                            alt="dropdown-icon"
                         />
                     </span>
                     <span>Display</span>
-                    <span className="button-icon">
+                    <span className="toggle-icon">
                         <img
                             src={`/Assets/icons_FEtask/down.svg`}
-                            alt="down-icon"
+                            alt="down-arrow-icon"
                         />
                     </span>
                 </button>
 
-                {isDisplayVisible && (
-                    <div className="dropdown-box">
+                {isDropdownVisible && (
+                    <div className="dropdown-menu">
                         <div>
                             <label>Grouping:</label>
                             <select value={grouping} onChange={(e) => handleGroupingChange(e.target.value)}>
@@ -70,13 +70,13 @@ const KanbanBoard = ({ tickets, grouping, sorting, onGroupingChange, onSortingCh
                 )}
             </div>
 
-            <div className="kanban-board">
+            <div className="ticket-board">
                 {sortedGroups.map(({ key, tickets }) => (
-                    <KanbanColumn key={key} title={key} tickets={tickets} users={users} grouping={grouping} />
+                    <TicketColumn key={key} title={key} tickets={tickets} users={users} grouping={grouping} />
                 ))}
             </div>
         </div>
     );
 };
 
-export default KanbanBoard;
+export default TicketBoard;

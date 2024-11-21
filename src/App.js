@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { fetchTickets } from './services/api';
-import KanbanBoard from './components/KanbanBoard';
+import TicketBoard from './components/TicketBoard';
 import './App.css'
 
 function App() {
@@ -32,7 +32,7 @@ function App() {
   return (
     <div>
       
-      <KanbanBoard
+      <TicketBoard
         tickets={tickets}
         users={users}
         grouping={grouping}
