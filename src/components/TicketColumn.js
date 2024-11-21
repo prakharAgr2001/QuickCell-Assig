@@ -31,7 +31,7 @@ const TicketColumn = ({ title, tickets, grouping, users }) => {
   };
 
 
-const getUserName = (userId) => {
+  const getUserName = (userId) => {
     const user = users.find((user) => user.id === userId);
     const initials = user ? user.name.slice(0, 2).toUpperCase() : "UU";
 
@@ -43,21 +43,21 @@ const getUserName = (userId) => {
         return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
     };
 
-    const backgroundColor = randomHSL();
+    const initialsColor = randomHSL();
 
     return (
         <div className="user-info" style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
             <div
                 className="user-circle"
                 style={{
-                    backgroundColor,
                     width: '30px',
                     height: '30px',
                     borderRadius: '50%',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    color: 'white',
+                    backgroundColor: '#f0f0f0', // Neutral background color
+                    color: initialsColor,
                     fontWeight: 'bold',
                     fontSize: '14px',
                 }}
@@ -68,6 +68,7 @@ const getUserName = (userId) => {
         </div>
     );
 };
+
 
 
 
@@ -150,7 +151,29 @@ const getUserName = (userId) => {
           ):(<span></span>)
           }
 
-          <span style={{ marginLeft: '10px', fontSize: '14px', color: '#888' }}>{ticket.tag[0] || "Unknown"}</span></div>
+         
+          <div style={{
+    display: 'flex',
+    alignItems: 'center',
+    padding: '4px 8px',
+    backgroundColor: '#f5f5f5',
+    borderRadius: '4px',
+    border: '1px solid #ddd',
+    maxWidth: 'fit-content'
+}}>
+    <span style={{
+        width: '8px',
+        height: '8px',
+        backgroundColor: '#888',
+        borderRadius: '50%',
+        marginRight: '10px'
+    }}></span>
+    <span style={{ fontSize: '14px', color: '#888' }}>
+        {ticket.tag[0] || "Unknown"}
+    </span>
+</div>
+
+        </div>
         </div>
       ))}
     </div>
